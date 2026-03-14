@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquid Ledger | The Ultimate Whisky Tracker</title>
+    <style>
+        /* --- YOUR FLUTTER DESIGN SYSTEM --- */
+        :root {
+          /* Primary Colors */
+          --forest-green: #1A2F23;
+          --slate-grey: #2E3B4E;
+          --antique-gold: #C5A059;
+          --off-white: #E0E0E0;
+          --dark-background: #121212;
+          
+          /* Semantic Colors */
+          --primary: var(--antique-gold);
+          --secondary: var(--forest-green);
+          --surface: var(--forest-green);
+          --on-surface: var(--off-white);
+          --background: var(--dark-background);
+        }
+
+        /* Google Fonts Import */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap');
+
+        /* Typography Classes */
+        .heading-display {
+          font-family: 'Playfair Display', serif;
+          font-size: 48px; /* Slightly upscaled for desktop hero */
+          font-weight: 700;
+          color: var(--antique-gold);
+          margin-bottom: 1rem;
+          line-height: 1.2;
+        }
+
+        .heading-medium {
+          font-family: 'Playfair Display', serif;
+          font-size: 24px;
+          font-weight: 600;
+          color: var(--off-white);
+          margin-bottom: 1rem;
+        }
+
+        .body-large {
+          font-family: 'Inter', sans-serif;
+          font-size: 18px;
+          color: var(--off-white);
+          line-height: 1.6;
+          margin-bottom: 2rem;
+        }
+
+        .body-medium {
+          font-family: 'Inter', sans-serif;
+          font-size: 14px;
+          color: rgba(224, 224, 224, 0.7); 
+          line-height: 1.5;
+        }
+
+        .label-small {
+          font-family: 'Inter', sans-serif;
+          font-size: 12px;
+          font-weight: 600;
+          letter-spacing: 1.5px;
+          color: var(--antique-gold);
+          text-transform: uppercase;
+          margin-bottom: 0.5rem;
+          display: block;
+        }
+
+        /* Liquid Ledger Theme */
+        body {
+          background-color: var(--dark-background);
+          color: var(--off-white);
+          font-family: 'Inter', sans-serif;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          min-height: 100vh;
+        }
+
+        /* Header/Navigation */
+        .app-header {
+          background-color: var(--dark-background);
+          color: var(--off-white);
+          padding: 1.5rem 5%;
+          border-bottom: 1px solid var(--slate-grey);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .app-header h1 {
+          font-family: 'Playfair Display', serif;
+          font-size: 24px;
+          font-weight: 700;
+          color: var(--antique-gold);
+          margin: 0;
+        }
+
+        /* Cards & Surfaces */
+        .card {
+          background-color: var(--surface);
+          border: 1px solid var(--slate-grey);
+          border-radius: 12px;
+          padding: 2rem;
+          color: var(--on-surface);
+        }
+
+        /* Buttons */
+        .btn-primary {
+          background-color: var(--primary);
+          color: var(--dark-background);
+          border: none;
+          padding: 1rem 2rem;
+          border-radius: 8px;
+          font-family: 'Inter', sans-serif;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          width: 100%;
+          margin-top: 1rem;
+        }
+
+        .btn-primary:hover {
+          background-color: #B89452; 
+          transform: translateY(-2px);
+        }
+
+        /* Input Fields */
+        .input-field {
+          background-color: rgba(46, 59, 78, 0.3); 
+          border: 1px solid var(--slate-grey);
+          border-radius: 8px;
+          padding: 1rem;
+          color: var(--off-white);
+          font-family: 'Inter', sans-serif;
+          font-size: 16px;
+          width: 100%;
+          box-sizing: border-box;
+          margin-top: 0.5rem;
+        }
+
+        .input-field:focus {
+          outline: none;
+          border-color: var(--primary);
+          box-shadow: 0 0 0 2px rgba(197, 160, 89, 0.2);
+        }
+
+        /* Whisky-Specific Elements */
+        .whisky-card {
+          background: linear-gradient(135deg, var(--surface) 0%, rgba(46, 59, 78, 0.8) 100%);
+          border: 1px solid var(--slate-grey);
+          border-radius: 16px;
+          padding: 2.5rem;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .whisky-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+
+        /* --- LAYOUT STRUCTURE (Added for Landing Page) --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6rem 0;
+            gap: 4rem;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-form {
+            flex: 1;
+            max-width: 450px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 0 6rem 0;
+        }
+
+        footer {
+            margin-top: auto;
+            border-top: 1px solid var(--slate-grey);
+            padding: 2rem 5%;
+            text-align: center;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                padding: 4rem 0;
+                text-align: center;
+            }
+            .heading-display {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <h1>Liquid Ledger</h1>
+        <a href="mailto:info@liquidledger.app" class="body-medium" style="color: var(--antique-gold); text-decoration: none;">Contact Us</a>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <div class="hero-content">
+                <span class="label-small">Early Access</span>
+                <h2 class="heading-display">The Ultimate Ledger for Your Liquid Gold.</h2>
+                <p class="body-large">A premium, digital vault to track your personal whisky collection, log intricate tasting notes, and monitor the real-time value of your rarest bottles.</p>
+            </div>
+
+            <div class="hero-form">
+                <div class="whisky-card">
+                    <h3 class="heading-medium">Join the Waitlist</h3>
+                    <p class="body-medium" style="margin-bottom: 1.5rem;">Secure your spot for early access to the iOS and Android beta.</p>
+                    
+                    <form action="#" method="POST">
+                        <label for="email" class="label-small" style="color: var(--off-white);">Email Address</label>
+                        <input type="email" id="email" class="input-field" placeholder="cheers@example.com" required>
+                        <button type="submit" class="btn-primary">Request Invite</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-grid">
+            <div class="card">
+                <span class="label-small">Inventory</span>
+                <h3 class="heading-medium">Scan & Store</h3>
+                <p class="body-medium">Instantly digitize your shelves. Log the vintage, distillery, cask type, and fill level of every bottle in your collection with ease.</p>
+            </div>
+            <div class="card">
+                <span class="label-small">Journal</span>
+                <h3 class="heading-medium">The Tasting Room</h3>
+                <p class="body-medium">Log detailed flavor profiles, rate your pours, and attach memories to every dram you open.</p>
+            </div>
+            <div class="card">
+                <span class="label-small">Valuation</span>
+                <h3 class="heading-medium">Market Data</h3>
+                <p class="body-medium">Watch your collection's net worth shift with an integrated, real-time look at secondary market pricing.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p class="body-medium">Distilled with passion in Frederiksberg.</p>
+        <p class="body-medium" style="margin-top: 0.5rem; font-size: 12px;">&copy; 2026 Liquid Ledger. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
