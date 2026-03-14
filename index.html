@@ -245,26 +245,25 @@
 
                     <div id="sf3z798be7e8e60d75c1ccb211b7150b60694ecbfc5753d538204fede8506e09fdae" data-type="signupform" style="opacity: 1;">
                       <div id="customForm">
-                        <div class="quick_form_12_css" style="background-color: transparent; width: 100%; z-index: 2; font-family: 'Inter', sans-serif; overflow: hidden" name="SIGNUP_BODY">
+                        <div class="quick_form_12_css" style="background-color: transparent; width: 100%; font-family: 'Inter', sans-serif !important;" name="SIGNUP_BODY">
                           
                           <div id="Zc_SignupSuccess" style="display:none; background-color: var(--forest-green); padding: 15px; border: 1px solid var(--antique-gold); border-radius: 8px; margin-bottom: 20px;">
                             <table width="100%" cellpadding="0" cellspacing="0" border="0">
                               <tbody>
                                 <tr>
                                   <td width="10%"><img src="https://zcv2-zcmp.maillist-manage.eu/images/challangeiconenable.jpg" style="filter: sepia(100%) saturate(300%) hue-rotate(5deg);"></td>
-                                  <td><span id="signupSuccessMsg" style="color: var(--antique-gold); font-family: 'Inter', sans-serif; font-size: 14px;">&nbsp;&nbsp;Success! Please check your email to confirm.</span></td>
+                                  <td><span id="signupSuccessMsg" style="color: var(--antique-gold); font-family: 'Inter', sans-serif; font-size: 14px;">&nbsp;&nbsp;Check your inbox to confirm!</span></td>
                                 </tr>
                               </tbody>
                             </table>
                           </div>
                     
                           <form method="POST" id="zcampaignOptinForm" style="margin: 0px; width: 100%; padding: 0px;" action="https://zcv2-zcmp.maillist-manage.eu/weboptin.zc" target="_zcSignup">
-                            
-                            <div style="background-color: rgba(210, 0, 0, 0.1); padding: 10px; color: #ff6b6b; font-size: 12px; margin-bottom: 15px; border: 1px solid #d20000; display: none" id="errorMsgDiv">Please check your email address.</div>
+                            <div style="background-color: rgba(210, 0, 0, 0.1); padding: 10px; color: #ff6b6b; font-size: 12px; margin-bottom: 15px; border: 1px solid #d20000; display: none" id="errorMsgDiv">Invalid email address.</div>
                             
                             <div style="margin-bottom: 15px;" class="SIGNUP_FLD">
-                              <label for="EMBED_FORM_EMAIL_LABEL" class="label-small">Email Address</label>
-                              <input type="text" class="input-field" placeholder="cheers@liquidledger.app" name="CONTACT_EMAIL" id="EMBED_FORM_EMAIL_LABEL" style="width: 100%;">
+                                <label for="EMBED_FORM_EMAIL_LABEL" class="label-small">Email Address</label>
+                                <input type="text" class="input-field" placeholder="cheers@liquidledger.app" name="CONTACT_EMAIL" id="EMBED_FORM_EMAIL_LABEL" style="width: 100%;">
                             </div>
                     
                             <div class="SIGNUP_FLD">
@@ -293,6 +292,12 @@
                         </div>
                       </div>
                       <img src="https://zcv2-zcmp.maillist-manage.eu/images/spacer.gif" id="refImage" onload="referenceSetter(this)" style="display:none;">
+                    </div>
+                    
+                    <div id="zcOptinOverLay" style="display:none; background-color: #000; opacity: 0.5; z-index: 100; position: fixed; width: 100%; top: 0; left: 0; height: 100%;"></div>
+                    <div id="zcOptinSuccessPopup" style="display:none; z-index: 9999; width: 400px; top: 20%; position: fixed; left: 50%; transform: translateX(-50%); background-color: var(--forest-green); border: 1px solid var(--antique-gold); padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                      <span style="position: absolute; top: 10px; right: 15px; cursor: pointer; color: var(--antique-gold); font-size: 20px;" id="closeSuccess">&times;</span>
+                      <div id="zcOptinSuccessPanel"></div>
                     </div>
                 </div>
             </div>
